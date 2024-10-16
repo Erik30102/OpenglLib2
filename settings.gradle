@@ -1,0 +1,3 @@
+rootProject.name = "OpenglLib_Base"
+
+include 'OpenGLLib','Sandbox'
