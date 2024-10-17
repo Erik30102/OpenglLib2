@@ -1,7 +1,6 @@
 package org.openglLib.Window;
 
 import org.lwjgl.glfw.GLFW;
-import org.lwjgl.opengl.GL;
 import org.openglLib.RenderApi;
 import org.openglLib.Window.Events.CharEvent;
 import org.openglLib.Window.Events.IEventCallback;
