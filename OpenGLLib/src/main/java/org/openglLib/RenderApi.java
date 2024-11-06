@@ -3,6 +3,7 @@ package org.openglLib;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL46;
 import org.lwjgl.opengl.GLDebugMessageCallback;
+import org.openglLib.Buffers.VertexArray;
 
 public class RenderApi {
     public static void Init() {
@@ -84,6 +85,28 @@ public class RenderApi {
      */
     public static void SetViewport(int width, int height) {
         SetViewport(0, 0, width, height);
+    }
+
+    /**
+     * Draws whole Vao if bound
+     * 
+     * @param vao vao to draw needed to be passed to get number of indicies
+     */
+    public static void DrawStatic(VertexArray vao) {
+        DrawStatic(vao.getIndexBuffer().GetCount());
+    }
+
+    /**
+     * Draws x amout of indicies to screen if vao is bound 
+     * 
+     * @param indiceCount number of indicies to be drawn of current vao 
+     */
+    public static void DrawStatic(int indiceCount) {
+        GL46.glDrawElements(GL46.GL_TRIANGLES, indiceCount, GL46.GL_UNSIGNED_INT, 0);
+    }
+
+    public static void DrawInstanced(VertexArray vao, int count) {
+        // TODO 
     }
 
     /**

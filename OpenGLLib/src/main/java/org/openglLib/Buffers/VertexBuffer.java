@@ -62,7 +62,7 @@ public class VertexBuffer {
 	}
 
     /**
-     * 
+     * Sets the data of the vbo to new vertecies. Only works if buffer Usage is set to Dynamic Draw
      * 
      * @param vertecies
      */
