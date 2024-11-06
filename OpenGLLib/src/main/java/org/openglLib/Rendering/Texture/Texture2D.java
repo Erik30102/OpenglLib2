@@ -27,14 +27,16 @@ public class Texture2D extends Texture {
 		GL46.glTextureParameteri(this.textureID, GL46.GL_TEXTURE_WRAP_T, this.InternalWrapModeToGLWrapMode(wrapMode));
    
         // Wrap byte array in byteBuffer
-        ByteBuffer byteBufferWithData = ByteBuffer.wrap(data);
+        ByteBuffer img = ByteBuffer.allocateDirect(data.length * 4);
+		img.put(data);
+		img.position(0);
 
         // Upload texture data to GPU
         GL46.glTexImage2D(GL46.GL_TEXTURE_2D, 0, 
             this.InternalFormatToGLDataFormat(format), 
             width, height, 0, 
             this.InternalFormatToGLDataFormat(format), 
-            GL46.GL_UNSIGNED_BYTE, byteBufferWithData);
+            GL46.GL_UNSIGNED_BYTE, img);
 
         GL46.glBindTexture(GL46.GL_TEXTURE_2D, 0);
     }

@@ -14,6 +14,7 @@ import org.openglLib.Buffers.VertexBuffer.BUFFER_USAGE;
 import org.openglLib.Rendering.Texture.Sprite;
 import org.openglLib.Rendering.Texture.Texture2D;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SpriteBatch {
@@ -47,6 +48,7 @@ public class SpriteBatch {
     public SpriteBatch(Shader shader) {
         this.shader = shader;
         this.texSlots = CreateTexSlots(GetMaxBindedTextures());
+        this.textures = new ArrayList<>();
 
         this.Start();
     }
@@ -74,7 +76,7 @@ public class SpriteBatch {
     private int[] generateIndices() {
         int[] indices = new int[MAX_BATCH_SIZE * 6];
 
-        for (int i = 0; i < indices.length; i++) {
+        for (int i = 0; i < MAX_BATCH_SIZE; i++) {
             indices[i * 6] = i * 4 + 2;
             indices[i * 6 + 1] = i * 4 + 1;
             indices[i * 6 + 2] = i * 4 + 0;
